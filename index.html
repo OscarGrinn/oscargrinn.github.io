@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oscar Grinn</title>
+
+  <!-- Íconos de Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #f1f1f1;
@@ -50,6 +53,21 @@
       color: #1abc9c;
     }
 
+    .social-icons {
+      margin-top: 25px;
+    }
+
+    .social-icons a {
+      color: #ccc;
+      font-size: 1.7rem;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #1abc9c;
+    }
+
     main {
       flex: 1;
       max-width: 800px;
@@ -89,11 +107,21 @@
   <header>
     <h1>Oscar Grinn</h1>
     <p class="tagline">Marca personal | Creatividad | Presencia</p>
+
     <nav class="nav">
       <a href="#about">Acerca de</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#contacto">Contacto</a>
     </nav>
+
+    <!-- Redes sociales -->
+    <div class="social-icons">
+      <a href="https://www.tiktok.com/@oscargrinn" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.youtube.com/@oscargrinn" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/oscar_grinn/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/OscarGrinn" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://x.com/oscar_grinn" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+    </div>
   </header>
 
   <main>
@@ -109,7 +137,7 @@
 
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>Puedes escribir a <a href="mailto:oscargrinn@email.com" style="color:#1abc9c;">oscargrinn@email.com</a> o seguir en redes sociales.</p>
+      <p>Escríbeme a <a href="mailto:oscargrinn@email.com" style="color:#1abc9c;">oscargrinn@email.com</a> o sigue en redes sociales.</p>
     </section>
   </main>
 
