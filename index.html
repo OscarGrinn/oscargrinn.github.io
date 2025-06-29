@@ -11,12 +11,13 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #f1f1f1;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      line-height: 1.6;
     }
 
     header {
@@ -29,12 +30,14 @@
       margin: 0;
       letter-spacing: 3px;
       color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     p.tagline {
       font-size: 1.2rem;
-      color: #ccc;
+      color: #aaa;
       margin-top: 10px;
+      font-weight: 300;
     }
 
     .nav {
@@ -45,8 +48,9 @@
       text-decoration: none;
       color: #fff;
       margin: 0 15px;
-      font-weight: bold;
+      font-weight: 600;
       transition: color 0.3s ease;
+      font-size: 1.1rem;
     }
 
     .nav a:hover {
@@ -69,9 +73,9 @@
       color: #1abc9c;
     }
 
-    /* Estilo específico para el ícono de TikTok (Font Awesome) */
+    /* Ajuste específico para el ícono de TikTok */
     .social-icons .fa-tiktok {
-      font-size: 1.5rem; /* Ajuste fino para igualar el tamaño */
+      font-size: 1.5rem;
       vertical-align: middle;
     }
 
@@ -79,10 +83,11 @@
       flex: 1;
       max-width: 800px;
       margin: 40px auto;
-      padding: 20px;
+      padding: 30px;
       background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(8px);
     }
 
     section {
@@ -91,20 +96,66 @@
 
     h2 {
       color: #1abc9c;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      border-bottom: 2px solid rgba(26, 188, 156, 0.3);
+      padding-bottom: 8px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #ddd;
+    }
+
+    a {
+      color: #1abc9c;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #16a085;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 30px;
       font-size: 0.9em;
       color: #888;
       border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
+      }
+      
+      .nav a {
+        margin: 0 10px;
+        font-size: 1rem;
+      }
+      
+      main {
+        padding: 20px;
+        margin: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      header {
+        padding: 80px 20px 30px;
+      }
+      
+      .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
     }
   </style>
@@ -139,7 +190,7 @@
         <i class="fab fa-tiktok"></i>
       </a>
       <!-- X (Twitter) -->
-      <a href="https://x.com/oscar_grinn" target="_blank" title="X">
+      <a href="https://twitter.com/oscar_grinn" target="_blank" title="X">
         <i class="fab fa-x-twitter"></i>
       </a>
     </div>
@@ -158,7 +209,7 @@
 
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>Escríbeme a <a href="mailto:oscargrinn@email.com" style="color:#1abc9c;">oscargrinn@email.com</a> o sigue en redes sociales.</p>
+      <p>Escríbeme a <a href="mailto:oscargrinn@email.com">oscargrinn@email.com</a> o sigue en redes sociales.</p>
     </section>
   </main>
 
