@@ -2,220 +2,1334 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oscar Grinn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oscar Grinn - Escritor de Cuentos Infantiles</title>
 
-  <!-- Font Awesome -->
-  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
+    :root {
+      --primary-color: #1E88E5; /* Azul */
+      --secondary-color: #FFC107; /* Amarillo */
+      --bg-color: #FFF9C4; /* Amarillo claro */
+      --text-color: #333333;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --book-bg: #ffffff;
+      --hover-bg: rgba(255, 152, 0, 0.1); /* Naranja claro */
+      --section-bg: rgba(255, 255, 255, 0.85);
+      --section-border: #FF9800; /* Naranja */
+      --glass-bg: rgba(255, 235, 59, 0.2); /* Amarillo claro */
+      --glass-border: rgba(255, 235, 59, 0.3);
+      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --aurora-color-1: rgba(30, 136, 229, 0.3); /* Azul */
+      --aurora-color-2: rgba(255, 193, 7, 0.2); /* Amarillo */
+      --border-gray: #FF5722; /* Rojo */
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #f1f1f1;
+      font-family: 'Comic Neue', 'Arial Rounded MT Bold', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.8;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Barra superior de redes sociales */
+    .social-top {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    header {
-      text-align: center;
-      padding: 100px 20px 40px;
-    }
-
-    h1 {
-      font-size: 3.5rem;
-      margin: 0;
-      letter-spacing: 3px;
-      color: #fff;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-
-    p.tagline {
-      font-size: 1.2rem;
-      color: #aaa;
-      margin-top: 10px;
-      font-weight: 300;
-    }
-
-    .nav {
-      margin-top: 30px;
-    }
-
-    .nav a {
-      text-decoration: none;
-      color: #fff;
-      margin: 0 15px;
-      font-weight: 600;
-      transition: color 0.3s ease;
-      font-size: 1.1rem;
-    }
-
-    .nav a:hover {
-      color: #1abc9c;
-    }
-
-    .social-icons {
-      margin-top: 25px;
-    }
-
-    .social-icons a {
-      color: #ccc;
-      font-size: 1.7rem;
-      margin: 0 12px;
-      display: inline-block;
-      transition: color 0.3s ease;
-    }
-
-    .social-icons a:hover {
-      color: #1abc9c;
-    }
-
-    /* Ajuste específico para el ícono de TikTok */
-    .social-icons .fa-tiktok {
-      font-size: 1.5rem;
-      vertical-align: middle;
-    }
-
-    main {
-      flex: 1;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      gap: 15px;
+      padding: 12px 25px;
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(8px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 50px;
+      border: 1px solid rgba(0,0,0,0.05);
     }
 
-    section {
+    .social-top a {
+      color: #444;
+      font-size: 1.2rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-top a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.5s;
+    }
+
+    .social-top a:hover::before {
+      left: 100%;
+    }
+
+    @keyframes wobbleZoom {
+      0% { transform: scale(1) rotate(0deg); }
+      15% { transform: scale(1.2) rotate(-5deg); }
+      30% { transform: scale(1.2) rotate(5deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    .social-top a:hover {
+      animation: wobbleZoom 0.8s ease-in-out forwards;
+      color: #000;
+      background: rgba(255,255,255,1);
+    }
+
+    /* Capas de fondo */
+    .rice-paper-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/cartographer.png') repeat;
+      background-size: 300px 300px;
+      z-index: -3;
+      opacity: 0.3;
+    }
+
+    .marble-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/diagonal-striped-brick.png');
+      opacity: 0.2;
+      z-index: -2;
+    }
+
+    /* Cabecera - Ajustada para superponerse más con la barra de íconos */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 100px 20px;
+      text-align: center;
+      scroll-margin-top: 100px;
+      margin-top: -80px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      width: 90%;
+      margin: 0 auto;
+      padding: 80px 60px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(5px);
+      border-radius: 8px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      overflow: hidden;
+      margin-top: 80px;
+      border: 3px dashed var(--primary-color);
+    }
+
+    /* Textura de granito para el recuadro */
+    .hero-content::before,
+    .book-item-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/crisp-paper-ruffles.png');
+      opacity: 0.1;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    /* Teclas de máquina de escribir griegas dentro del recuadro - Más dispersas */
+    .greek-keys {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .greek-key {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255,193,7,0.7); /* Amarillo */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Times New Roman', serif;
+      font-size: 1.1rem;
+      color: #333;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.1);
+      opacity: 0.6;
+      animation: float-key 15s infinite linear;
+      will-change: transform;
+    }
+
+    @keyframes float-key {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(var(--move-x), var(--move-y)) rotate(5deg); }
+    }
+
+    /* Efecto de letras */
+    .name-container {
+      position: relative;
       margin-bottom: 40px;
     }
 
-    h2 {
-      color: #1abc9c;
-      margin-bottom: 20px;
-      font-size: 2rem;
-      border-bottom: 2px solid rgba(26, 188, 156, 0.3);
-      padding-bottom: 8px;
+    .name-letters {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-weight: 700;
+      font-family: 'Fredoka One', cursive;
+      color: var(--primary-color);
+      position: relative;
+      z-index: 2;
+      text-shadow: 3px 3px 0 var(--secondary-color);
     }
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #ddd;
+    .name-row {
+      display: flex;
+      justify-content: center;
     }
 
-    a {
-      color: #1abc9c;
+    .name-letter {
+      font-size: 6rem;
+      margin: 0 8px;
+      position: relative;
+      transition: transform 0.3s ease;
+      cursor: default;
+      will-change: transform;
+      display: inline-block;
+      animation: bounce 2s infinite alternate;
+    }
+
+    .name-letter:hover {
+      transform: translateY(-10px) rotate(10deg);
+      color: var(--border-gray); /* Rojo */
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+
+    /* Iconos de identidad */
+    .identity-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .identity-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .identity-icon .icon-container {
+      width: 70px;
+      height: 70px;
+      background: var(--secondary-color); /* Amarillo */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+      will-change: transform;
+      border: 3px solid var(--primary-color); /* Azul */
+    }
+
+    .identity-icon:hover .icon-container {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      background: var(--border-gray); /* Rojo */
+    }
+
+    .identity-icon span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--primary-color);
+      opacity: 0.8;
+      font-family: 'Comic Neue', cursive;
+    }
+
+    /* Partículas mágicas */
+    .magic-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .magic-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--primary-color); /* Azul */
+      box-shadow: 0 0 5px 1px rgba(30, 136, 229, 0.8);
+      animation: float-particle 15s infinite linear;
+      opacity: 0.8;
+      will-change: transform, opacity;
+    }
+
+    .magic-particle.black {
+      background: var(--secondary-color); /* Amarillo */
+      box-shadow: 0 0 5px 1px rgba(255, 193, 7, 0.8);
+    }
+
+    @keyframes float-particle {
+      0% { transform: translate(0, 0) scale(1); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translate(var(--end-x), var(--end-y)) scale(0.5); opacity: 0; }
+    }
+
+    /* Destellos de letras (reducidos) */
+    .letter-sparks {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .letter-spark {
+      position: absolute;
+      font-size: 1.8rem;
+      font-family: 'Fredoka One', cursive;
+      color: var(--border-gray); /* Rojo */
+      animation: sparkle 8s infinite ease-in-out;
+      opacity: 0;
+      will-change: transform, opacity;
+      font-weight: 500;
+      text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    }
+
+    @keyframes sparkle {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+      20% { opacity: 0.8; transform: translate(var(--move-x), var(--move-y)) scale(1.2); }
+      100% { opacity: 0; transform: translate(var(--end-x), var(--end-y)) scale(0.3); }
+    }
+
+    /* Letras flotantes (reducidas) */
+    .floating-letters {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .floating-letter {
+      position: absolute;
+      font-size: 1.5rem;
+      font-family: 'Fredoka One', cursive;
+      color: var(--primary-color); /* Azul */
+      animation: float 25s infinite ease-in-out;
+      opacity: 0.5;
+      will-change: transform, opacity;
+      font-weight: 500;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
+      50% { opacity: 0.8; }
+      100% { transform: translate(var(--end-x), var(--end-y)) rotate(360deg); opacity: 0.3; }
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      position: relative;
+    }
+
+    /* Secciones */
+    section {
+      margin-bottom: 80px;
+      padding: 50px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.8) url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1), 
+                  inset 0 0 30px rgba(0,0,0,0.05);
+      transition: all 0.5s ease;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid var(--primary-color); /* Azul */
+    }
+
+    /* Efecto aurora boreal */
+    section::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        transparent,
+        transparent,
+        transparent,
+        var(--aurora-color-1),
+        var(--aurora-color-2),
+        transparent,
+        transparent
+      );
+      transform: rotate(20deg);
+      animation: aurora 30s infinite linear;
+      z-index: 0;
+      opacity: 0.5;
+      mix-blend-mode: overlay;
+    }
+
+    @keyframes aurora {
+      0% { transform: translateX(-100%) rotate(20deg); }
+      50% { transform: translateX(0%) rotate(20deg); opacity: 0.7; }
+      100% { transform: translateX(100%) rotate(20deg); }
+    }
+
+    section:hover {
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                  inset 0 0 30px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+    }
+
+    /* Sección de Poema */
+    .poema-container {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .poema {
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 2.4;
+      position: relative;
+      font-family: 'Comic Neue', cursive;
+      color: #333;
+    }
+
+    .verso {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+      display: block;
+      margin-bottom: 1.8rem;
+      will-change: transform, opacity;
+    }
+
+    .verso.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .poema::before, .poema::after {
+      content: '"';
+      font-size: 4rem;
+      color: var(--primary-color);
+      opacity: 0.2;
+      position: absolute;
+    }
+
+    .poema::before {
+      top: -30px;
+      left: -40px;
+    }
+
+    .poema::after {
+      bottom: -50px;
+      right: -40px;
+    }
+
+    /* Sección de Libros - Optimizada para rendimiento */
+    .books-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    /* Contenedor de cada libro - Optimizado */
+    .book-item-wrapper {
+      width: 100%;
+      padding: 30px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      margin-bottom: 10px;
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+      border: 2px dashed var(--border-gray); /* Rojo */
+    }
+
+    .book-item-wrapper:hover {
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      transform: translateY(-5px) rotate(2deg);
+    }
+
+    .book-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Separador entre libros */
+    .book-separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 30px 0;
+      position: relative;
+      width: 100%;
+    }
+
+    .separator-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+      flex-grow: 1;
+      max-width: 150px;
+    }
+
+    .separator-icon {
+      margin: 0 20px;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      opacity: 0.7;
+    }
+
+    /* Contenedor de imagen del libro - Optimizado */
+    .book-image-container {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .book-image {
+      background: var(--book-bg) url('https://www.transparenttextures.com/patterns/rice-paper-3.png');
+      padding: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1), 
+                  inset 0 0 20px rgba(0,0,0,0.05);
+      transition: all 0.4s ease;
+      position: relative;
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid var(--border-gray);
+      margin: 0 auto;
+    }
+
+    .book-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      filter: sepia(20%);
+      border-radius: 3px;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(0,0,0,0.1);
+      will-change: transform, filter;
+    }
+
+    .book-image:hover img {
+      transform: scale(1.03) rotate(2deg);
+      filter: sepia(0%) brightness(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Galería de imágenes - Optimizada */
+    .book-gallery {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .thumbnail {
+      width: 50px;
+      height: 70px;
+      cursor: pointer;
+      border: 2px solid var(--secondary-color);
+      transition: all 0.3s ease;
+      opacity: 0.7;
+      object-fit: cover;
+      will-change: transform, opacity;
+      border-radius: 5px;
+    }
+
+    .thumbnail:hover {
+      opacity: 1;
+      transform: scale(1.05);
+      border-color: var(--primary-color);
+    }
+
+    .thumbnail.active {
+      opacity: 1;
+      border-color: var(--border-gray);
+      transform: scale(1.05);
+    }
+
+    /* Información del libro */
+    .book-info {
+      width: 100%;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    .book-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      font-family: 'Fredoka One', cursive;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+      text-shadow: 2px 2px 0 var(--secondary-color);
+    }
+
+    .book-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      transition: width 0.3s ease;
+    }
+
+    .book-item:hover .book-title::after {
+      width: 80%;
+    }
+
+    .book-description {
+      margin-bottom: 25px;
+      line-height: 1.7;
+      font-family: 'Comic Neue', cursive;
+    }
+
+    /* Botón de compra */
+    .buy-button {
+      display: inline-block;
+      padding: 12px 30px;
+      background: linear-gradient(90deg, var(--primary-color), var(--border-gray));
+      color: white;
+      border-radius: 30px;
       text-decoration: none;
-      transition: color 0.3s;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      font-family: 'Comic Neue', cursive;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-top: 10px;
+      will-change: transform;
+      border: 2px solid var(--secondary-color);
     }
 
-    a:hover {
-      color: #16a085;
+    .buy-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--border-gray), var(--primary-color));
+      transition: opacity 0.3s ease;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    .buy-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .buy-button:hover::before {
+      opacity: 1;
     }
 
     footer {
       text-align: center;
-      padding: 30px;
-      font-size: 0.9em;
-      color: #888;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 40px;
+      padding: 40px;
+      font-size: 1rem;
+      color: #555;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.9) url('https://www.transparenttextures.com/patterns/rice-paper-3.png');
+      position: relative;
+      font-family: 'Comic Neue', cursive;
     }
 
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--border-gray));
+      opacity: 0.7;
+    }
+
+    /* Estilos para títulos */
+    h1, h2, h3 {
+      font-family: 'Fredoka One', cursive;
+      color: var(--primary-color);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+
+    /* Media Queries para móviles */
     @media (max-width: 768px) {
-      h1 {
-        font-size: 2.5rem;
+      .hero-section {
+        margin-top: -60px;
       }
       
-      .nav a {
-        margin: 0 10px;
+      .hero-content {
+        padding: 60px 30px;
+        margin-top: 60px;
+      }
+      
+      .name-letter {
+        font-size: 4rem;
+      }
+      
+      section {
+        padding: 40px 25px;
+      }
+      
+      .poema {
+        font-size: 1.2rem;
+        line-height: 2.2;
+      }
+      
+      .poema::before, .poema::after {
+        font-size: 3rem;
+      }
+
+      .social-top {
+        padding: 10px 20px;
+        gap: 12px;
+      }
+
+      .social-top a {
+        width: 32px;
+        height: 32px;
         font-size: 1rem;
       }
+
+      .greek-key {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9rem;
+      }
       
-      main {
+      .book-title {
+        font-size: 1.5rem;
+      }
+      
+      .book-item-wrapper {
         padding: 20px;
-        margin: 20px;
+      }
+      
+      .book-separator {
+        margin: 20px 0;
+      }
+      
+      .separator-line {
+        max-width: 80px;
+      }
+      
+      .separator-icon {
+        margin: 0 10px;
+        font-size: 1.2rem;
+      }
+      
+      .identity-icons {
+        gap: 20px;
+      }
+      
+      .identity-icon .icon-container {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
       }
     }
 
     @media (max-width: 480px) {
-      h1 {
-        font-size: 2rem;
+      .hero-section {
+        padding: 80px 20px;
+        margin-top: -50px;
       }
       
-      header {
-        padding: 80px 20px 30px;
+      .hero-content {
+        margin-top: 50px;
       }
       
-      .nav {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+      .name-letter {
+        font-size: 3rem;
+      }
+
+      .social-top {
+        gap: 8px;
+        padding: 8px 15px;
+      }
+
+      .greek-key {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
+      }
+      
+      .book-gallery {
+        gap: 8px;
+      }
+      
+      .thumbnail {
+        width: 40px;
+        height: 60px;
+      }
+      
+      .identity-icons {
+        gap: 15px;
+      }
+      
+      .identity-icon .icon-container {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+      }
+      
+      .identity-icon span {
+        font-size: 0.9rem;
       }
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Fondo de textura de arroz -->
+  <div class="rice-paper-bg"></div>
+  
+  <!-- Fondo marmoleado -->
+  <div class="marble-bg"></div>
+  
+  <!-- Partículas mágicas -->
+  <div class="magic-particles" id="magicParticles"></div>
 
-  <header>
-    <h1>Oscar Grinn</h1>
-    <p class="tagline">Sueña | Crea | Imagina</p>
+  <!-- Barra superior de redes sociales -->
+  <div class="social-top">
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/oscargrinn/" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/oscargrinn" target="_blank" title="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@OscarGrinn" target="_blank" title="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@oscargrinn" target="_blank" title="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    <!-- X (Twitter) -->
+    <a href="https://twitter.com/OscarGrinn" target="_blank" title="X">
+      <i class="fab fa-x-twitter"></i>
+    </a>
+  </div>
 
-    <nav class="nav">
-      <a href="#about">Acerca de</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+  <!-- Destellos de letras (reducidos) -->
+  <div class="letter-sparks" id="letterSparks"></div>
 
-    <div class="social-icons">
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/oscar_grinn/" target="_blank" title="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <!-- Facebook -->
-      <a href="https://www.facebook.com/OscarGrinn" target="_blank" title="Facebook">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <!-- YouTube -->
-      <a href="https://www.youtube.com/@oscargrinn" target="_blank" title="YouTube">
-        <i class="fab fa-youtube"></i>
-      </a>
-      <!-- TikTok -->
-      <a href="https://www.tiktok.com/@oscargrinn" target="_blank" title="TikTok">
-        <i class="fab fa-tiktok"></i>
-      </a>
-      <!-- X (Twitter) -->
-      <a href="https://twitter.com/oscar_grinn" target="_blank" title="X">
-        <i class="fab fa-x-twitter"></i>
-      </a>
+  <!-- Letras flotantes (reducidas) -->
+  <div class="floating-letters" id="floatingLetters"></div>
+
+  <!-- Sección Hero con nombre -->
+  <section class="hero-section" id="inicio">
+    <div class="hero-content">
+      <!-- Teclas de máquina de escribir griegas dentro del recuadro -->
+      <div class="greek-keys" id="greekKeys"></div>
+      
+      <div class="name-container">
+        <!-- Letras del nombre Oscar Grinn -->
+        <div class="name-letters">
+          <div class="name-row">
+            <span class="name-letter">O</span>
+            <span class="name-letter">s</span>
+            <span class="name-letter">c</span>
+            <span class="name-letter">a</span>
+            <span class="name-letter">r</span>
+          </div>
+          <div class="name-row">
+            <span class="name-letter">G</span>
+            <span class="name-letter">r</span>
+            <span class="name-letter">i</span>
+            <span class="name-letter">n</span>
+            <span class="name-letter">n</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Iconos de identidad -->
+      <div class="identity-icons">
+        <div class="identity-icon">
+          <div class="icon-container">
+            <i class="fas fa-book"></i>
+          </div>
+          <span>Cuentos</span>
+        </div>
+        <div class="identity-icon">
+          <div class="icon-container">
+            <i class="fas fa-pencil-alt"></i>
+          </div>
+          <span>Escritor</span>
+        </div>
+        <div class="identity-icon">
+          <div class="icon-container">
+            <i class="fas fa-child"></i>
+          </div>
+          <span>Infantil</span>
+        </div>
+        <div class="identity-icon">
+          <div class="icon-container">
+            <i class="fas fa-magic"></i>
+          </div>
+          <span>Magia</span>
+        </div>
+      </div>
     </div>
-  </header>
+  </section>
 
   <main>
-    <section id="about">
-      <h2>¿Quién es Oscar Grinn?</h2>
-      <p>Oscar Grinn es una marca que representa autenticidad, visión y estilo. Este sitio es el espacio digital donde se construye, comunica y conecta esa identidad con el mundo.</p>
+    <!-- Sección de Poema -->
+    <section>
+      <div class="poema-container">
+        <h2>Mi Mundo de Cuentos</h2>
+        <div class="poema" id="poemaText">
+          <span class="verso">En un país de colores y sueños,</span>
+          <span class="verso">donde los dragones son amigos y no dueños,</span>
+          <span class="verso">los niños ríen con cada aventura,</span>
+          <span class="verso">y aprenden que la magia es pura.</span>
+          <span class="verso">Con palabras tejo cada historia,</span>
+          <span class="verso">llena de risas, amor y gloria.</span>
+        </div>
+      </div>
     </section>
 
-    <section id="proyectos">
-      <h2>Proyectos</h2>
-      <p>Próximamente encontrarás aquí una selección de ideas, colaboraciones y contenidos desarrollados bajo la visión de Oscar Grinn.</p>
+    <!-- Sección de Libros -->
+    <section id="libros">
+      <h2>Mis Cuentos Infantiles</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; font-style: italic; color: #555; font-family: 'Comic Neue', cursive;">
+        Historias mágicas que despiertan la imaginación de los más pequeños
+      </p>
+      
+      <div class="books-container">
+        <!-- Libro 1 -->
+        <div class="book-item-wrapper">
+          <!-- Teclas griegas para este libro - Más dispersas -->
+          <div class="greek-keys" id="greekKeysBook1"></div>
+          <div class="book-item">
+            <div class="book-image-container">
+              <div class="book-image">
+                <img src="https://via.placeholder.com/300x450/1E88E5/FFFFFF?text=El+Dragón+Curioso" alt="Portada del libro El Dragón Curioso" id="book1-main">
+              </div>
+              <div class="book-gallery">
+                <img src="https://via.placeholder.com/300x450/1E88E5/FFFFFF?text=El+Dragón+Curioso" class="thumbnail active" onclick="changeImage('book1-main', this.src, this)" alt="Portada 1">
+                <img src="https://via.placeholder.com/300x450/FFC107/000000?text=Ilustraciones" class="thumbnail" onclick="changeImage('book1-main', this.src, this)" alt="Portada 2">
+                <img src="https://via.placeholder.com/300x450/FF5722/FFFFFF?text=Personajes" class="thumbnail" onclick="changeImage('book1-main', this.src, this)" alt="Portada 3">
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">El Dragón Curioso</h3>
+              <p class="book-description">
+                La historia de un pequeño dragón que, en lugar de escupir fuego, escupía preguntas. Una aventura llena de color y aprendizaje sobre la importancia de la curiosidad y la amistad. Ideal para niños de 4 a 8 años, con ilustraciones vibrantes y texto en letra grande.
+              </p>
+              <a href="https://www.amazon.com/el-dragon-curioso" target="_blank" class="buy-button">Comprar ahora</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Separador decorativo -->
+        <div class="book-separator">
+          <div class="separator-line"></div>
+          <div class="separator-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="separator-line"></div>
+        </div>
+
+        <!-- Libro 2 -->
+        <div class="book-item-wrapper">
+          <!-- Teclas griegas para este libro - Más dispersas -->
+          <div class="greek-keys" id="greekKeysBook2"></div>
+          <div class="book-item">
+            <div class="book-image-container">
+              <div class="book-image">
+                <img src="https://via.placeholder.com/300x450/FFC107/000000?text=La+Princesa+Valiente" alt="Portada del libro La Princesa Valiente" id="book2-main">
+              </div>
+              <div class="book-gallery">
+                <img src="https://via.placeholder.com/300x450/FFC107/000000?text=La+Princesa+Valiente" class="thumbnail active" onclick="changeImage('book2-main', this.src, this)" alt="Portada 1">
+                <img src="https://via.placeholder.com/300x450/1E88E5/FFFFFF?text=Ilustraciones" class="thumbnail" onclick="changeImage('book2-main', this.src, this)" alt="Portada 2">
+                <img src="https://via.placeholder.com/300x450/FF5722/FFFFFF?text=Personajes" class="thumbnail" onclick="changeImage('book2-main', this.src, this)" alt="Portada 3">
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">La Princesa Valiente</h3>
+              <p class="book-description">
+                Una princesa que prefiere una espada a una corona y un caballo a un trono. Esta historia rompe estereotipos mostrando que la valentía y la bondad no tienen género. Con rimas divertidas y mensajes positivos, perfecto para leer en voz alta antes de dormir.
+              </p>
+              <a href="https://www.amazon.com/la-princesa-valiente" target="_blank" class="buy-button">Comprar ahora</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Separador decorativo -->
+        <div class="book-separator">
+          <div class="separator-line"></div>
+          <div class="separator-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="separator-line"></div>
+        </div>
+
+        <!-- Libro 3 -->
+        <div class="book-item-wrapper">
+          <!-- Teclas griegas para este libro - Más dispersas -->
+          <div class="greek-keys" id="greekKeysBook3"></div>
+          <div class="book-item">
+            <div class="book-image-container">
+              <div class="book-image">
+                <img src="https://via.placeholder.com/300x450/FF5722/FFFFFF?text=El+Monstruo+de+Colores" alt="Portada del libro El Monstruo de Colores" id="book3-main">
+              </div>
+              <div class="book-gallery">
+                <img src="https://via.placeholder.com/300x450/FF5722/FFFFFF?text=El+Monstruo+de+Colores" class="thumbnail active" onclick="changeImage('book3-main', this.src, this)" alt="Portada 1">
+                <img src="https://via.placeholder.com/300x450/1E88E5/FFFFFF?text=Ilustraciones" class="thumbnail" onclick="changeImage('book3-main', this.src, this)" alt="Portada 2">
+                <img src="https://via.placeholder.com/300x450/FFC107/000000?text=Personajes" class="thumbnail" onclick="changeImage('book3-main', this.src, this)" alt="Portada 3">
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">El Monstruo de Colores</h3>
+              <p class="book-description">
+                Un cuento interactivo que ayuda a los niños a identificar y expresar sus emociones. Cada color representa un sentimiento diferente, y el monstruo aprende a entender lo que siente. Incluye actividades al final del libro para trabajar la inteligencia emocional.
+              </p>
+              <a href="https://www.amazon.com/el-monstruo-de-colores" target="_blank" class="buy-button">Comprar ahora</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p>Escríbeme a <a href="mailto:oscargrinn@email.com">oscargrinn@email.com</a> o sigue en redes sociales.</p>
+    <!-- Sección de Eventos -->
+    <section id="eventos">
+      <h2>Próximos Eventos</h2>
+      <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+        <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid var(--primary-color); box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+          <h3 style="color: var(--border-gray); margin-top: 0;">Lectura de Cuentos en la Librería Mágica</h3>
+          <p><i class="fas fa-calendar-alt" style="color: var(--primary-color);"></i> 15 de Julio, 2025 - 17:00 hrs</p>
+          <p><i class="fas fa-map-marker-alt" style="color: var(--border-gray);"></i> Librería Mágica, Calle Fantasía 123</p>
+          <p>¡Ven a escuchar mis cuentos favoritos! Habrá actividades para niños y firma de libros.</p>
+        </div>
+        
+        <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid var(--secondary-color); box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+          <h3 style="color: var(--border-gray); margin-top: 0;">Taller de Creación de Cuentos</h3>
+          <p><i class="fas fa-calendar-alt" style="color: var(--primary-color);"></i> 22 de Agosto, 2025 - 16:00 hrs</p>
+          <p><i class="fas fa-map-marker-alt" style="color: var(--border-gray);"></i> Centro Cultural Imagina, Plaza de los Sueños</p>
+          <p>Taller para niños de 6 a 10 años donde aprenderán a crear sus propias historias con mi ayuda.</p>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    © 2025 Oscar Grinn. Todos los derechos reservados.
+    © 2025 Oscar Grinn. Todos los derechos reservados. <br>
+    <small>Las aventuras más divertidas comienzan cuando abres un libro</small>
   </footer>
 
+  <script>
+    // Generar partículas mágicas
+    const magicParticlesContainer = document.getElementById('magicParticles');
+    const numParticles = 30;
+    
+    for (let i = 0; i < numParticles; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'magic-particle';
+      
+      // Alternar entre partículas azules y amarillas
+      if (Math.random() > 0.5) {
+        particle.classList.add('black');
+      }
+      
+      // Posición inicial aleatoria
+      const startX = Math.random() * 100;
+      const startY = Math.random() * 100;
+      
+      // Movimiento aleatorio
+      const endX = (Math.random() - 0.5) * 200;
+      const endY = (Math.random() - 0.5) * 200;
+      
+      particle.style.left = `${startX}%`;
+      particle.style.top = `${startY}%`;
+      particle.style.setProperty('--end-x', `${endX}px`);
+      particle.style.setProperty('--end-y', `${endY}px`);
+      
+      // Retraso y duración aleatorios
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      particle.style.animationDuration = `${10 + Math.random() * 10}s`;
+      
+      magicParticlesContainer.appendChild(particle);
+    }
+
+    // Generar destellos de letras (reducidos)
+    const letterSparksContainer = document.getElementById('letterSparks');
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    const numSparks = 20;
+    
+    for (let i = 0; i < numSparks; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'letter-spark';
+      spark.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
+      
+      // Posición inicial aleatoria
+      const startX = Math.random() * 100;
+      const startY = Math.random() * 100;
+      
+      // Movimiento aleatorio
+      const moveX = (Math.random() - 0.5) * 100;
+      const moveY = (Math.random() - 0.5) * 50;
+      
+      // Posición final aleatoria
+      const endX = (Math.random() - 0.5) * 200;
+      const endY = (Math.random() - 0.5) * 200;
+      
+      spark.style.left = `${startX}%`;
+      spark.style.top = `${startY}%`;
+      spark.style.setProperty('--move-x', `${moveX}px`);
+      spark.style.setProperty('--move-y', `${moveY}px`);
+      spark.style.setProperty('--end-x', `${endX}px`);
+      spark.style.setProperty('--end-y', `${endY}px`);
+      
+      // Retraso y duración aleatorios
+      spark.style.animationDelay = `${Math.random() * 5}s`;
+      spark.style.animationDuration = `${8 + Math.random() * 5}s`;
+      
+      letterSparksContainer.appendChild(spark);
+    }
+
+    // Generar letras flotantes (reducidas)
+    const floatingLettersContainer = document.getElementById('floatingLetters');
+    const numFloatingLetters = 60;
+    
+    for (let i = 0; i < numFloatingLetters; i++) {
+      const letter = document.createElement('div');
+      letter.className = 'floating-letter';
+      letter.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
+      
+      // Posición inicial aleatoria
+      const startX = Math.random() * 100;
+      const startY = Math.random() * 100;
+      
+      // Posición final aleatoria
+      const endX = (Math.random() - 0.5) * 200;
+      const endY = (Math.random() - 0.5) * 200;
+      
+      letter.style.left = `${startX}%`;
+      letter.style.top = `${startY}%`;
+      letter.style.setProperty('--end-x', `${endX}px`);
+      letter.style.setProperty('--end-y', `${endY}px`);
+      
+      // Duración de animación
+      const duration = Math.random() * 15 + 15;
+      letter.style.animationDuration = `${duration}s`;
+      
+      floatingLettersContainer.appendChild(letter);
+    }
+
+    // Función para generar teclas griegas - Más dispersas
+    function generateGreekKeys(containerId, numKeys) {
+      const container = document.getElementById(containerId);
+      const greekLetters = 'ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω';
+      
+      for (let i = 0; i < numKeys; i++) {
+        const key = document.createElement('div');
+        key.className = 'greek-key';
+        key.textContent = greekLetters.charAt(Math.floor(Math.random() * greekLetters.length));
+        
+        // Posición aleatoria con más espacio (10% a 90%)
+        const posX = Math.random() * 80 + 10;
+        const posY = Math.random() * 80 + 10;
+        
+        key.style.left = `${posX}%`;
+        key.style.top = `${posY}%`;
+        
+        // Movimiento más amplio
+        const moveX = (Math.random() - 0.5) * 40;
+        const moveY = (Math.random() - 0.5) * 20;
+        
+        key.style.setProperty('--move-x', `${moveX}px`);
+        key.style.setProperty('--move-y', `${moveY}px`);
+        
+        // Retraso y duración aleatorios
+        key.style.animationDelay = `${Math.random() * 5}s`;
+        key.style.animationDuration = `${15 + Math.random() * 10}s`;
+        
+        container.appendChild(key);
+      }
+    }
+
+    // Generar teclas griegas para cada sección
+    generateGreekKeys('greekKeys', 30); // Para el recuadro principal
+    generateGreekKeys('greekKeysBook1', 15); // Para el primer libro
+    generateGreekKeys('greekKeysBook2', 15); // Para el segundo libro
+    generateGreekKeys('greekKeysBook3', 15); // Para el tercer libro
+
+    // Animación de versos al hacer scroll
+    const versos = document.querySelectorAll('.verso');
+
+    function checkScroll() {
+      const poemaSection = document.querySelector('.poema-container');
+      const sectionTop = poemaSection.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (sectionTop < windowHeight - 100) {
+        versos.forEach((verso, index) => {
+          setTimeout(() => {
+            verso.classList.add('visible');
+          }, index * 500);
+        });
+        window.removeEventListener('scroll', checkScroll);
+      }
+    }
+
+    // Cambiar imágenes de los libros - Optimizado para evitar vibración
+    function changeImage(mainImageId, newSrc, clickedThumbnail) {
+      const mainImage = document.getElementById(mainImageId);
+      const gallery = clickedThumbnail.parentElement;
+      const thumbnails = gallery.querySelectorAll('.thumbnail');
+      
+      // Si ya es la imagen activa, no hacer nada
+      if (clickedThumbnail.classList.contains('active')) return;
+      
+      // Desactivar transiciones durante el cambio para evitar vibración
+      mainImage.style.transition = 'none';
+      mainImage.style.opacity = 0;
+      
+      // Usar requestAnimationFrame para mejor rendimiento
+      requestAnimationFrame(() => {
+        mainImage.src = newSrc;
+        requestAnimationFrame(() => {
+          mainImage.style.transition = 'opacity 0.3s ease';
+          mainImage.style.opacity = 1;
+          
+          // Actualizar thumbnails activos
+          thumbnails.forEach(thumb => thumb.classList.remove('active'));
+          clickedThumbnail.classList.add('active');
+        });
+      });
+    }
+
+    // Animación de letras del nombre
+    const nameLetters = document.querySelectorAll('.name-letter');
+    nameLetters.forEach((letter, index) => {
+      letter.style.animationDelay = `${index * 0.1}s`;
+    });
+
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('load', checkScroll);
+
+    // Activar animación de iconos sociales
+    const socialLinks = document.querySelectorAll('.social-top a');
+    socialLinks.forEach(link => {
+      link.style.animationPlayState = 'running';
+    });
+  </script>
 </body>
 </html>
